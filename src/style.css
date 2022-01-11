@@ -1,0 +1,131 @@
+body {
+    background-color: #929292;
+}
+
+.app {
+    margin: 0px auto;
+    width: 1280px;
+  
+}
+
+header {
+    width: 100%;
+    height: max-content;
+    
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.logo-label {
+   
+    width: max-content;
+    height: 70px;
+    font-family: 'Mukta', sans-serif;
+    color: white;
+    font-size: 48px;
+}
+
+.search-panel {
+
+    border-radius: 100px;
+    background-color: white;
+    width: 785px;
+    height: 30px;
+    padding: 20px;
+    box-shadow: 1px 1px 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.search-panel>input {
+    width: 656px;
+    height: 36px;
+    border: none;
+    background-color: rgb(238, 238, 238);
+    border-radius: 100px;
+}
+
+.search-btn {
+    width: 35px;
+    height: 35px;
+    background-image: url('../resources/images/search-icon.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.search-panel-wrapper {
+    width: max-content;
+ 
+}
+
+.weather-list {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+
+}
+
+.weather-list-item {
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+    box-shadow: 1px 1px 5px black;
+
+    background-color: white;
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+.weather-list-item>.buttons {
+   
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+    
+}
+
+.info-btn {
+    width: 20px;
+    height: 20px;
+    background-image: url('../resources/images/info-icon.png');
+    background-size: cover;
+    background-position: center;
+    margin-right: 140px;
+}
+
+.close-btn {
+    width: 20px;
+    height: 20px;
+    background-image: url('../resources/images/close-icon.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.weather-list-item>div {
+    margin-top: 20px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.city-name {
+    font-size: 24px;
+}
+
+.temperature {
+    font-style: 18px;
+}
+
+.description {
+    font-style: 14px;
+}
+
+.search-btn:hover,.info-btn:hover,.close-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
