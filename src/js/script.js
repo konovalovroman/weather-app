@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     class WeatherAPI {
 
-        _apiKey = 'cd8a7d99a022a62768e0c560e03df096';
+    _apiKey = 'cd8a7d99a022a62768e0c560e03df096';
 
         getRecourses = async (url) => {
             let res = await fetch(url);
@@ -37,25 +37,42 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     const api = new WeatherAPI();
-    const weatherList = ['рим', 'париж', 'милан'];
+    const storage = window.localStorage;
+    const weatherList = [];
    // api.getWeatherInCurrentCity('кейптаун').then(console.log);
+
+   storage.setItem('weatherList', weatherList);
+    // console.log(storage.getItem('weatherList').split(','));
+
   
+   function loadList(weatherList) {
+       if (storage.getItem('weatherList')) {
+        weatherList = storage.getItem('weatherList').split(',');
+       }
+   }
+
+   function addToList(weatherObj) {
+    console.log(weatherObj);
+    weatherList.push(weatherObj.cityName);
+    saveList();
+    printList(weatherList);
+}
+
+   function saveList() {
+    storage.setItem('weatherList', weatherList);
+   }
 
    function onSearch() {
        document.querySelector('.search-btn').addEventListener('click', () => {
         const result = document.querySelector('.input-form').value;
         if (result) {
             document.querySelector('.input-form').value = '';       
-                api.getWeatherInCurrentCity(result).then(addToList);
+            api.getWeatherInCurrentCity(result).then(addToList);
         }       
        });
    }
 
-   function addToList(weatherObj) {
-       console.log(weatherObj);
-       weatherList.push(weatherObj.cityName);
-       printList(weatherList);
-   }
+ 
 
    function printList(weatherList) {
         removeElements();
@@ -65,8 +82,6 @@ window.addEventListener('DOMContentLoaded', () => {
    }
 
    function makeList(weatherObj) {
-       console.log(weatherObj);
-       
     document.querySelector('.weather-list').appendChild(getListItemElement(weatherObj));
    }
 
@@ -103,6 +118,7 @@ window.addEventListener('DOMContentLoaded', () => {
        });
    }
 
+   loadList(weatherList);
    printList(weatherList);
    onSearch();
    infoDeleteButtons();
@@ -112,9 +128,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
+   console.log(WeatherAPI._apiKey);
 
 
 
